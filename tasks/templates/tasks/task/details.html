@@ -1,0 +1,21 @@
+{% extends 'tasks/base.html' %}
+{% block title %}{{task.title }}{% endblock %}
+{% block content %}
+    <h1> {{ task.title }}</h1>
+    {{task.description|linebreaks}}
+        <p class="status">
+        <br>
+        {% if task.is_completed %}
+            Completed
+        {% else %}
+            Not Completed
+        {% endif %}
+    </p>
+    <p class="date">
+        created at {{ task.created_at }}<br>
+        last updated at {{ task.updated_at }}
+    </p>
+
+
+
+{% endblock %}

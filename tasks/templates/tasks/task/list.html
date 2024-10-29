@@ -1,0 +1,23 @@
+{% extends 'tasks/base.html' %}
+{%  block title %}Tasks{% endblock %}
+{% block content %}
+    <h1>The Tasks</h1>
+    {% for task in tasks %}
+    <h2>
+        <a href="{% url 'tasks:task_details' task.id %}">
+            {{ task.title }}
+           </a>
+    </h2>
+        {{ task.description|truncatechars:30|linebreaks }}
+        <br>
+        {% if task.is_completed %}
+            Completed
+        {% else %}
+            Not Completed
+        {% endif %}
+
+        <p class="date">
+            created at {{ task.created_at }}
+        </p>
+    {% endfor %}
+{% endblock %}
